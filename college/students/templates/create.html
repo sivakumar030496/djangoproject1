@@ -1,0 +1,16 @@
+<html>
+<head>
+    </head>
+<center>
+<body>
+<center>
+        <h2 style="color:blue">Create page</h2>
+    </center>
+<form method = "POST" class = "post-form" action="/students/create/">
+{% csrf_token %}
+{{form.as_p}}
+    <button type = "submit">create</button>
+</form>
+</body>
+</center>
+</html>

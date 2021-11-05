@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+</head>
+<body>
+<center>
+
+   Welcome
+    {% if user.is_authenticated %}
+           {{user.username}}
+    {% endif %}
+</center>
+    <center> Student details </center>
+<center>
+    <table border="1px">
+           <thead>
+           <th>name</th>
+           <th>Regid</th>
+           <th>email</th>
+           <th>address</th>
+           <th>country</th>
+           <th>gender</th>
+           <th>Markspersentage</th>
+           </thead>
+    {% for i in college %}
+    <tr>
+        <td>{{i.name}}</td>
+        <td>{{i.Regid}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.address}}</td>
+        <td>{{i.country}}</td>
+        <td>{{i.gender}}</td>
+        <td>{{i.Markspersentage}}</td>
+    <td>
+
+        <a href="/students/edit/{{i.id}}">edit</a> </td>
+        <td> <a href="/students/delete/{{i.id}}">delete</a> </td>
+        </tr>
+
+    {% endfor %}
+      </table>
+<form action="/students/queries/" method="POST">
+        {% csrf_token %}
+         <button type="submit">queries</button>
+    </form>
+
+    <form action="/students/logout/" method="POST">
+        {% csrf_token %}
+         <button type="submit">logout</button>
+    </form>
+
+</center>
+</body>
+</html>
